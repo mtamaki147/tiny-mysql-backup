@@ -1,0 +1,18 @@
+#!/bin/sh
+# -*- coding: utf-8 -*-
+
+set -e
+
+TITLE=
+MYSQL_USER=
+MYSQL_PASSWD=
+AWS_ACCESS_KEY=
+AWS_SECRET_KEY=
+AWS_BUCKET_NAME=
+AWS_UPLOAD_DIR=
+VG_NAME=
+LV_NAME=
+TARGET_DIR=
+
+sudo ionice -c3 nice -n 19 env/bin/python ./mysql-backup.py --backup-by-lvm --title=$TITLE --mysql-user=$MYSQL_USER --mysql-passwd=$MYSQL_PASSWD --aws-access-key=$AWS_ACCESS_KEY --aws-secret-key=$AWS_SECRET_KEY --aws-bucket-name=$AWS_BUCKET_NAME --aws-upload-dir=$AWS_UPLOAD_DIR --vg-name=$VG_NAME --lv-name=$LV_NAME --target-mysql-dir=$TARGET_DIR $@
+
